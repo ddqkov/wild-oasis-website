@@ -11,7 +11,12 @@ import Logo from "./_components/Logo";
 import Navigation from "./_components/Navigation";
 
 export const metadata = {
-	title: "The Wild Oasis",
+	title: {
+		template: "The Wild Oasis | %s",
+		default: "The Wild Oasis",
+	},
+	description:
+		"Luxurious cabin hotel located in the heart of the Italian Dolomites.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
