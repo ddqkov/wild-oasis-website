@@ -6,10 +6,11 @@
  * Internal dependencies.
  */
 import CabinCard from "@/app/_components/CabinCard";
+import { getCabins } from "@/app/_lib/data-service";
 import { type Cabin } from "@/app/_types/cabins/cabin";
 
-export default function Page() {
-	const cabins: Cabin[] = [];
+export default async function Page() {
+	const cabins: Cabin[] = await getCabins();
 
 	return (
 		<div>
