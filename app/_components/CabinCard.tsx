@@ -2,6 +2,8 @@
  * External dependencies.
  */
 import { UsersIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
+import Link from "next/link";
 
 /**
  * Internal dependencies.
@@ -13,11 +15,16 @@ function CabinCard({ cabin }: { cabin: Cabin }) {
 
 	return (
 		<div className="flex border-primary-800 border">
-			<img
-				src={image}
-				alt={`Cabin ${name}`}
-				className="flex-1 border-r border-primary-800"
-			/>
+			<div className="relative w-1/3 min-h-48 shrink-0">
+				<Image
+					src={image}
+					fill
+					alt={`Cabin ${name}`}
+					blurDataURL={image}
+					sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+					className="flex-1 border-r border-primary-800 object-cover"
+				/>
+			</div>
 
 			<div className="flex-grow">
 				<div className="pt-5 pb-4 px-7 bg-primary-950">
@@ -54,12 +61,12 @@ function CabinCard({ cabin }: { cabin: Cabin }) {
 				</div>
 
 				<div className="bg-primary-950 border-t border-t-primary-800 text-right">
-					<a
+					<Link
 						href={`/cabins/${id}`}
 						className="border-l border-primary-800 py-4 px-6 inline-block hover:bg-accent-600 transition-all hover:text-primary-900"
 					>
 						Details & reservation &rarr;
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>
