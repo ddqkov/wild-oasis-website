@@ -6,7 +6,7 @@ import { eachDayOfInterval } from "date-fns";
 /////////////
 // GET
 
-export async function getCabin(id) {
+export async function getCabin(id: string): Promise<Cabin> {
 	const { data, error } = await supabase
 		.from("cabins")
 		.select("*")
@@ -17,7 +17,8 @@ export async function getCabin(id) {
 	// await new Promise((res) => setTimeout(res, 1000));
 
 	if (error) {
-		console.error(error);
+		console.error("Error fetching cabin:", error);
+		throw new Error("Cabin could not be loaded");
 	}
 
 	return data;
@@ -50,8 +51,6 @@ export const getCabins = async function (): Promise<Cabin[]> {
 
 	return data as Cabin[];
 };
-
-getCabins();
 
 // Guests are uniquely identified by their email address
 export async function getGuest(email) {
